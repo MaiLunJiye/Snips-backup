@@ -1,0 +1,17 @@
+#================================
+#功能模板
+#================================
+snippet time: "插入时间" t
+`date +%Y-%m-%d\ %k:%M`
+endsnippet
+
+snippet fn: "插入当前文件名" w
+`!p snip.rv = fn`
+endsnippet
+
+#git
+snippet Git_ignore: "定义gitignore" tw
+tags
+.swp
+.ycm_extra_conf.py
+endsnippet

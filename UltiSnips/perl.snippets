@@ -1,0 +1,115 @@
+#=================================
+#通用vim折叠
+#=================================
+# vim的自己折叠模式 默认 {{{   }}}
+snippet "\Azzz:(\w+)" "vim折叠" r
+#{{{ --${1:`!p t[1] = match.group(1)`}--
+$0
+#}}} --$1--
+endsnippet
+
+snippet zzz: "vim折叠" bw
+#{{{
+$0
+#}}}
+endsnippet
+
+#================================= 
+#预处理 
+#================================= 
+snippet perl5 "Perl初始化" bw
+#!/usr/bin/perl
+
+use utf8;
+use strict;
+use 5.010;
+
+endsnippet
+
+# 包初始化
+global !p
+import re
+import string
+
+def chulifn(fn):
+	return re.sub("\.[^.]*$","",fn)
+endglobal
+
+snippet PK: "包初始化" bw
+package ${1:`!p snip.rv = chulifn(fn)`};
+endsnippet
+
+snippet pk: "包初始化" bw
+package ${1:package_name} {
+${2}
+
+1;
+} # $1
+endsnippet
+
+#================================= 
+#结构语句 
+#================================= 
+# if
+snippet if "if" wb
+if (${1}) {
+	${2:TODO}
+}
+endsnippet
+
+# else 
+snippet el "else" w
+else { 
+	${1} 
+} 
+endsnippet 
+
+# While Loop 
+snippet wh "c.while" wb
+while (${1}) { 
+	${2} 
+} 
+endsnippet 
+# else if 
+snippet ei "perl.elsif" w
+elsif (${1}) { 
+	${2} 
+} 
+endsnippet 
+
+
+snippet for "perl.for" bw
+for ${1:my $index }(${2:@list}) {
+	${3:# TODO}
+}
+endsnippet 
+
+snippet map "perl.map" w
+map {${1:do_som_match}} ${3:@somArray}; 
+endsnippet 
+# grep
+snippet grep "perl.grep" w
+grep {${1:do_som_match}} ${3:@somArray}; 
+endsnippet
+
+
+#================================= 
+#语言扩展 
+#================================= 
+# 子程序 
+snippet sub	"子程序"
+sub ${1:sub_name} { 
+	${2:TODO}
+} 
+endsnippet
+
+# 黑魔法 ~ 施瓦茨变换
+snippet swz "黑魔法 ~ 施瓦茨变换" w
+map {
+	${4:Getdata} 
+} sort {
+	${3:# compare}
+} map {
+	${2:# control}
+} ${1:@someArray};
+endsnippet

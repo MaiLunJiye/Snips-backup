@@ -1,0 +1,58 @@
+#================================= 
+#预处理 
+#================================= 
+snippet perl6 "perl6初始化" bw
+#!/usr/bin/perl6
+use v6;
+
+endsnippet
+
+snippet if "if" w
+if ${1:$condition} {
+	${2:#TODO}
+}
+endsnippet
+
+snippet el "else" w
+else { 
+	${1:#TODO} 
+} 
+endsnippet 
+
+snippet ei "perl.elsif" w
+elsif ${1:$condition} { 
+	${2:#TODO} 
+}
+endsnippet 
+
+
+snippet for "for" w
+for ${1:@array} -> ${2:$1-item} {
+	${3:#TODO}
+}
+endsnippet 
+
+snippet gv "given" w
+given ${1:$var} {
+	when ${2:TODO} { ${3:TODO} }
+	${4:default \{ \} }
+}
+endsnippet
+
+snippet lp "loop, perl6 for" w
+loop (${1:my $i = 0; $i < 10; i++}) {
+	${2:#TODO}
+}
+endsnippet
+
+snippet sub "perl6子程序" bw
+sub ${1:SubName ($value)} {
+	${1:#TODO}
+}
+endsnippet
+
+snippet mul "perl6可重载子程序" bw
+multi ${1:SubName ($value)} {
+	${1:#TODO}
+}
+endsnippet

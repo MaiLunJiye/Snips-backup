@@ -1,0 +1,141 @@
+#================================= 
+#通用vim折叠
+#================================= 
+# vim的自己折叠模式 默认 {{{   }}}
+snippet "\Azzz:(\w+)" "vim折叠" r 
+`!p t[1] = match.group(1)`
+//{{{ --$1--
+$0
+//}}} --$1--
+endsnippet
+
+snippet zzz: "vim折叠" bw
+//{{{
+$0
+//}}}
+endsnippet
+
+#================================= 
+#预处理 
+#================================= 
+global !p
+import re
+import string
+
+def header(fn):
+	ret = ("__" + fn + "__").upper()
+	return re.sub("\.","_",ret)
+endglobal
+
+snippet head: "头文件格式" bw
+#ifndef ${1:`!p snip.rv = header(fn)`}
+#define $1
+${2}
+#endif /* $1 */
+endsnippet
+
+
+# #include "..." 
+snippet #INC 
+#include "${1:...}"
+endsnippet 
+# #include <...> 
+snippet #inc 
+#include <${1:...}>
+endsnippet 
+
+snippet c: "c初始化" bw
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(${1:int argc, char* argv[]}) {
+	${2:`...`}
+	return 0;
+}
+endsnippet
+
+#================================= 
+#结构语句 
+#================================= 
+# if 
+snippet if "if" w
+if (${1:'...'}) { 
+	${2:'...'} 
+} 
+endsnippet
+# else if 
+snippet ei "c.else-if" w
+else if (${1:'...'}) { 
+	${2:'...'} 
+} 
+endsnippet 
+
+# else 
+snippet el "c.else" w
+else { 
+	${1:'...'} 
+} 
+endsnippet 
+
+# While Loop 
+snippet wh "c.when" w
+while (${1}) { 
+	${2} 
+} 
+endsnippet 
+
+# Do While Loop 
+snippet do "c.do" w
+do { 
+	${2} 
+} while (${1}); 
+endsnippet 
+
+# for
+snippet for "c.for" w
+for (${1}) {
+
+}
+endsnippet 
+
+# switch 
+snippet sw "switch-case" bw
+switch (${1}) { 
+	case ${2} :
+		${3}
+	break; 
+
+	default:
+		${4}
+	break; 
+} 
+endsnippet 
+
+# case
+snippet case "c.case" bw
+case ${1} :
+	${2}
+break; 
+endsnippet
+#================================= 
+#语言扩展 
+#================================= 
+# struct 
+snippet struct: "c.struct" bw
+typedef struct ${1:StructName} 
+{ 
+	${2}
+} $1; 
+endsnippet 
+
+# 函数
+snippet fun "c.function" bw
+${1:void} ${2:Functin_name}(${3}) {
+	${4}
+}
+endsnippet
+# 函数定义
+snippet fund "c.function" bw
+${1:void} ${2:Functin_name}(${3});
+endsnippet
+

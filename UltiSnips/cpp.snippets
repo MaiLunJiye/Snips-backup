@@ -1,0 +1,67 @@
+extends c
+#================================= 
+#预处理 
+#================================= 
+
+snippet cpp: "cpp初始化" bw
+#include <iostream>
+
+using namespace std;
+
+int main(${1:int argc, char* argv[]}){
+	${2:/*TODO*/}
+	return 0;
+}
+endsnippet
+#================================= 
+#语言扩展 
+#================================= 
+# Class 
+snippet class: "cpp.class" bw
+class ${1:ClassName} 
+{ 
+private: 
+	${2}
+public: 
+	$1 (); 
+	virtual ~$1 (); 
+	${3}
+}; 
+endsnippet 
+#================================= 
+#结构语句 
+#================================= 
+# try-catch 
+snippet try	"cpp, try"	bw
+try { 
+${VISUAL}
+} catch (${1}) { 
+
+} 
+endsnippet 
+
+snippet ca 
+catch (${1}) { 
+} 
+endsnippet 
+#================================= 
+#容器 
+#================================= 
+# std::vector 
+snippet vec 
+vector<${1:char}>   v${2}; 
+endsnippet 
+# std::list 
+snippet lst 
+list<${1:char}> l${2}; 
+endsnippet 
+# std::set 
+snippet set 
+set<${1:key}>   s${2}; 
+endsnippet 
+# std::map 
+snippet map 
+map<${1:key}, ${2:value}>   m${3}; 
+endsnippet 
+
+
