@@ -57,6 +57,12 @@ endsnippet
 #================================= 
 #结构语句 
 #================================= 
+
+snippet len "if" w
+int ${1:array_len} = sizeof(${2}) / sizeof($2[0]);
+endsnippet
+
+
 # if 
 snippet if "if" w
 if (${1:'...'}) { 
