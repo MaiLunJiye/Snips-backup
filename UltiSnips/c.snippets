@@ -23,7 +23,7 @@ import re
 import string
 
 def header(fn):
-	ret = ("__" + fn + "__").upper()
+	ret = ("__" + fn).upper()
 	return re.sub("\.","_",ret)
 endglobal
 
@@ -34,15 +34,6 @@ ${2}
 #endif /* $1 */
 endsnippet
 
-
-# #include "..." 
-snippet #INC 
-#include "${1:...}"
-endsnippet 
-# #include <...> 
-snippet #inc 
-#include <${1:...}>
-endsnippet 
 
 snippet c: "c初始化" bw
 #include <stdio.h>
